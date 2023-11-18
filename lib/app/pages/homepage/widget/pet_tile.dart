@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petadoption/app/pages/pet_info_page/pet_info_page.dart';
 import 'package:petadoption/app/utils/helper.dart';
 import 'package:petadoption/core/models/pet.dart';
 
@@ -8,11 +9,17 @@ class PetTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Image.asset(
-          'assets/images/landing_page_dogs.jpg',
+    return InkWell(
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(builder: (context) => PetInfoPage(pet: pet))),
+      child: SizedBox(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.asset(
+            'assets/images/landing_page_dogs.jpg',
+            height: height(context) * 0.4,
+            fit: BoxFit.cover,
+          ),
         ),
       ),
     );
@@ -20,7 +27,7 @@ class PetTile extends StatelessWidget {
 }
 
 Pet p1 = Pet(
-  name: 'Dog',
+  name: 'Bruno',
   breed: 'Corgi',
   petType: PetType.dog,
   description: 'description',
